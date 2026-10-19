@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NowPlace</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topo">
+    <a class="logo" href="#">now<span>place</span></a>
+    <span id="usuarioTopo" class="usuario-topo"></span>
+  </header>
+
+  <main class="container">
+    <section id="entrada" class="painel">
+      <p class="sobretitulo">SEU MOMENTO, SEU LUGAR</p>
+      <h1>Onde você está <span>agora?</span></h1>
+      <p class="subtitulo">Compartilhe o lugar e o que está acontecendo neste instante.</p>
+      <form id="formUsuario" class="linha-form">
+        <input id="nomeUsuario" type="text" maxlength="30" placeholder="Como podemos te chamar?" required>
+        <button type="submit">Entrar</button>
+      </form>
+    </section>
+
+    <section id="app" hidden>
+      <section class="painel criar">
+        <div class="cabecalho-secao">
+          <div>
+            <p class="sobretitulo">REGISTRE O MOMENTO</p>
+            <h2>Seu Now</h2>
+          </div>
+          <span class="ponto-online">● AO VIVO</span>
+        </div>
+        <label for="descricao">O que você está fazendo?</label>
+        <textarea id="descricao" maxlength="180" rows="2" placeholder="Conte o que está acontecendo agora..." required></textarea>
+
+        <div class="camera-area">
+          <video id="video" autoplay playsinline muted hidden></video>
+          <canvas id="canvas" hidden></canvas>
+          <div id="cameraPlaceholder" class="camera-placeholder">
+            <div class="icone-camera">◎</div>
+            <strong id="passoCamera">Sua câmera está desligada</strong>
+            <span id="instrucaoCamera">Inicie a captura para fotografar o ambiente e depois tirar uma selfie.</span>
+          </div>
+        </div>
+        <p id="mensagem" class="mensagem" role="status">Informe seu nome para começar.</p>
+        <div class="botoes">
+          <button id="iniciarCamera" type="button" class="botao-secundario">Iniciar câmera</button>
+          <button id="capturar" type="button" disabled>Capturar ambiente</button>
+          <button id="publicar" type="button" disabled>Publicar Now</button>
+        </div>
+
+        <div id="previews" class="previews" hidden>
+          <div><span>AMBIENTE</span><img id="fotoAmbiente" alt="Foto do ambiente"></div>
+          <div><span>SELFIE</span><img id="fotoSelfie" alt="Selfie"></div>
+        </div>
+        <div class="local-atual">
+          <span class="pin">⌖</span>
+          <div><strong id="nomeLocal">Localização ainda não obtida</strong><small id="coordenadas"></small></div>
+          <button id="obterLocal" type="button" class="link-botao">Obter localização</button>
+        </div>
+      </section>
+
+      <section class="feed-secao">
+        <div class="cabecalho-secao">
+          <div><p class="sobretitulo">PERTO DE VOCÊ</p><h2>Feed de Nows</h2></div>
+          <div class="raio"><label for="raio">Raio</label><select id="raio"><option value="1">1 km</option><option value="5" selected>5 km</option><option value="10">10 km</option><option value="25">25 km</option><option value="50">50 km</option></select></div>
+        </div>
+        <div id="avisoFeed" class="aviso">Publique um Now para liberar o feed pelas próximas 24 horas.</div>
+        <div id="feed" class="feed"></div>
+      </section>
+    </section>
+  </main>
+
+  <footer>NOWPLACE · Compartilhe o aqui e agora</footer>
+  <script src="script.js"></script>
+</body>
+</html>
